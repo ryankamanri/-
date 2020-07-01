@@ -6,7 +6,7 @@ const int size=10;
 void start(int *x,int *y,int sq[size][size],char chara[size][size]);
 void restart(int *x,int *y,int sq[size][size],char chara[size][size]);
 void change(int *x,int *y,int judge,int sq[size][size]);
-void readkey(int *x,int *y,int *a,int sq[size][size],char chara[size][size]);
+int readkey(int *x,int *y,int *a,int sq[size][size],char chara[size][size]);
 int calculate(int *x,int *y,int sq[size][size]);
 
 
@@ -18,11 +18,15 @@ int main()
     start(&x,&y,sq,chara);
     while(a==0)
     {	
-		readkey(&x,&y,&a,sq,chara);
-        system("cls");//«Â∆¡ 
-        restart(&x,&y,sq,chara);
+		
+        // system("cls");//Ê∏ÖÂ±è 
+	if(readkey(&x,&y,&a,sq,chara)==0)
+	{
+        	restart(&x,&y,sq,chara);
+	}
+
     }
-       for(int i=0;i<size;i++)
+    for(int i=0;i<size;i++)
     {
         for(int j=0;j<size;j++)
         {
@@ -36,6 +40,7 @@ int main()
 }
 void start(int *x,int *y,int sq[size][size],char chara[size][size])
 {
+	printf("wasdÁßªÂä®\ jÂà§Êñ≠\ kÊèíÊóó\n");
     int i,j;
     srand(time(NULL));
     for(i=0;i<size;i++)
@@ -52,7 +57,7 @@ void start(int *x,int *y,int sq[size][size],char chara[size][size])
 }
 void restart(int *x,int *y,int sq[10][10],char chara[size][size])
 {
-	printf("wasd“∆∂Ø\ j≈–∂œ\ k≤Â∆Ï\n"); 
+	printf("wasdÁßªÂä®\ jÂà§Êñ≠\ kÊèíÊóó\n"); 
 	int i,j;
     for(i=0;i<size;i++)
     {
@@ -86,11 +91,11 @@ void change(int *x,int *y,int judge,char chara[size][size])
 		case 4:
 			(*x)++;
 			if(chara[*x][*y]=='*') chara[*x][*y]='$';
-			if(chara[*x-1][*y]=='$') chara[*x-1][*y]='*';
+			else if(chara[*x-1][*y]=='$') chara[*x-1][*y]='*';
 			break;
 	}
 }
-void readkey(int *x,int *y,int *a,int sq[size][size],char chara[size][size])
+int readkey(int *x,int *y,int *a,int sq[size][size],char chara[size][size])
 {
 	if(kbhit())
 	{
@@ -118,10 +123,10 @@ void readkey(int *x,int *y,int *a,int sq[size][size],char chara[size][size])
 				judge=2;
 				change(x,y,judge,chara);
 				break;
-			case (int)'j'://≈–∂œ 
+			case (int)'j'://Âà§Êñ≠ 
 				if(sq[*x][*y]==1)
 				{
-					chara[*x][*y]='@';//µ„ª˜∫Û÷–¡Àµÿ¿◊ 
+					chara[*x][*y]='@';//ÁÇπÂáªÂêé‰∏≠‰∫ÜÂú∞Èõ∑ 
 					*a=1;
 				} 
 				else
@@ -131,7 +136,7 @@ void readkey(int *x,int *y,int *a,int sq[size][size],char chara[size][size])
 				break;
 			case (int)'k':
 				if(chara[*x][*y]='!') chara[*x][*y]='$';
-				else if(chara[*x][*y]='$') chara[*x][*y]='!';//≤Â…œ∆Ï÷ƒ
+				else if(chara[*x][*y]='$') chara[*x][*y]='!';//Êèí‰∏äÊóóÂ∏ú
 				break;
 			default:
 				break;
