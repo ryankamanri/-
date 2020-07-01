@@ -2,7 +2,7 @@
 #include<conio.h>
 #include<stdlib.h>
 #include<time.h>
-const int size=10;
+const int size=10;//设置此选项以改变扫雷方阵的大小,可提升难度
 void start(int *x,int *y,int sq[size][size],char chara[size][size]);
 void restart(int *x,int *y,int sq[size][size],char chara[size][size]);
 void change(int *x,int *y,int judge,int sq[size][size]);
